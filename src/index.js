@@ -3,12 +3,11 @@ import ReactDOM from 'react-dom';  //--> for websites; react-native for mobile
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import 'tachyons';
-import CardList from './CardList.js'
-import { robots } from './robots.js'
+import App from './App.js'
 ReactDOM.render(
   <React.StrictMode>
     <div>
-    <CardList robots={robots} />
+      <App/>
     </div>
     
   </React.StrictMode>,
