@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';  //--> for websites; react-native for mobile
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import 'tachyons';
-import App from './App.js'
+import App from './containers/App.js'
 import { removeProperties } from '@babel/types';
 
 ReactDOM.render(

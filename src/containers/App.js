@@ -1,7 +1,7 @@
 import React from 'react';
-import CardList from './CardList.js'
-import SearchBox from './SearchBox.js'
-import Scroll from './Scroll.js'
+import CardList from '../components/CardList.js'
+import SearchBox from '../components/SearchBox.js'
+import Scroll from '../components/Scroll.js'
 
 class App extends React.Component { // --> A component that has state defined inside it is called a smart component. searchBox and Cardlist are dumb components as they have no state.
     constructor() {   // --> We initialize a class with this countructor. equivalent to __init__ dunder in python.
@@ -27,11 +27,8 @@ class App extends React.Component { // --> A component that has state defined in
         const filterRobots = this.state.robots.filter((item) => {  // --> we Filter the items for the search field
             return item.name.toLowerCase().includes(this.state.searchField.toLowerCase())
         })
-        if (this.state.robots.length === 0) { // --> Add loading to page untill data is fetched
-            return <h1> LOADING...</h1>
-        }
-        else {
-           return (
+        return !this.state.robots.length ? // --> Add loading to page untill data is fetched. If robots.length is zero return loading, else components.
+            <h1> LOADING...</h1> : (
                 <div className='tc'>
                     <h1 className='f1'>RoboFriends</h1>
                     <SearchBox searchChange={this.onSearchChange}/>
@@ -44,6 +41,6 @@ class App extends React.Component { // --> A component that has state defined in
             );
         }
     }
-}
+
 
 export default App;
