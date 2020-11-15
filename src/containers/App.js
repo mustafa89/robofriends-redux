@@ -21,7 +21,7 @@ class App extends React.Component { // --> A component that has state defined in
     }
     onSearchChange = (event) => {       // --> Always create self defined function inside a react class like this
         this.setState({ searchField: event.target.value })  // --> We reset the state from empty to search field value
-       
+
     }
     render() {
         const filterRobots = this.state.robots.filter((item) => {  // --> we Filter the items for the search field
@@ -32,7 +32,7 @@ class App extends React.Component { // --> A component that has state defined in
                 <div className='tc'>
                     <h1 className='f1'>RoboFriends</h1>
                     <SearchBox searchChange={this.onSearchChange}/>
-                    <Scroll> 
+                    <Scroll>
                         <CardList robots={filterRobots}/>
                     </Scroll>
                 </div>
