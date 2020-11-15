@@ -2,6 +2,7 @@ import React from 'react';
 import CardList from '../components/CardList.js'
 import SearchBox from '../components/SearchBox.js'
 import Scroll from '../components/Scroll.js'
+import ErrorBoundary from '../components/ErrorBoundary.js'
 
 class App extends React.Component { // --> A component that has state defined inside it is called a smart component. searchBox and Cardlist are dumb components as they have no state.
     constructor() {   // --> We initialize a class with this countructor. equivalent to __init__ dunder in python.
@@ -11,7 +12,7 @@ class App extends React.Component { // --> A component that has state defined in
             searchField: ''
         }
     }
-    // --> Special react build in function. Executes Before render() function.
+    // --> Special react built-in function. Executes Before render() function.
     componentDidMount() {  // --> instead of getting robot users from a file we get them from an API now
         fetch('https://jsonplaceholder.typicode.com/users')
         .then(response => response.json())
@@ -33,11 +34,15 @@ class App extends React.Component { // --> A component that has state defined in
                     <h1 className='f1'>RoboFriends</h1>
                     <SearchBox searchChange={this.onSearchChange}/>
                     <Scroll>
-                        <CardList robots={filterRobots}/>
+                        <ErrorBoundary> 
+                            <CardList robots={filterRobots}/>
+                        </ErrorBoundary>
                     </Scroll>
                 </div>
                 // we pass the values of filtered items here to robots
                 // --> SearchBox and CardList are components.
+                // --> If anything in the Cardlist fails Errorboundary will catch it and it won't cause the whole app to break.
+                // --> only the component will fail. The h1 tag will only be visible in production mode.
             );
         }
     }
