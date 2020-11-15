@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import 'tachyons';
 import App from './App.js'
 import { removeProperties } from '@babel/types';
+
 ReactDOM.render(
   <React.StrictMode>
     <div>
