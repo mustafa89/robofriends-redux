@@ -1,6 +1,7 @@
 import React from 'react';
 import CardList from './CardList.js'
 import SearchBox from './SearchBox.js'
+import Scroll from './Scroll.js'
 
 class App extends React.Component { // --> A component that has state defined inside it is called a smart component. searchBox and Cardlist are dumb components as they have no state.
     constructor() {   // --> We initialize a class with this countructor. equivalent to __init__ dunder in python.
@@ -33,8 +34,10 @@ class App extends React.Component { // --> A component that has state defined in
            return (
                 <div className='tc'>
                     <h1 className='f1'>RoboFriends</h1>
-                    <SearchBox searchChange={this.onSearchChange}/>   
-                    <CardList robots={filterRobots}/>
+                    <SearchBox searchChange={this.onSearchChange}/>
+                    <Scroll> 
+                        <CardList robots={filterRobots}/>
+                    </Scroll>
                 </div>
                 // we pass the values of filtered items here to robots
                 // --> SearchBox and CardList are components.
